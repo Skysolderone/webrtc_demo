@@ -6,6 +6,7 @@ const CreateRoom = () => {
     e.preventDefault();
     const resp = await fetch('http://localhost:8080/create');
     const { room_id } = await resp.json();
+    console.log(`room id${room_id}`);
     nav(`/room/$(room_id)`, { state: { id: room_id } });
   };
   return (

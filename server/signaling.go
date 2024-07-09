@@ -11,8 +11,11 @@ import (
 var AllRooms RoomMap
 
 func CreateRoomRequestHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	roomId := AllRooms.CreateRoom()
+	log.Println("room Id:", roomId)
 	type resp struct {
 		RoomId string `json:"room_id"`
 	}
